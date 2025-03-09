@@ -22,6 +22,15 @@ model User {
   teams         TeamMember[]
   invitations   Invitation[]
   passwordReset PasswordReset?
+  
+  // New relations
+  sentMessages     Message[]        @relation("MessageSender")
+  receivedMessages Message[]        @relation("MessageReceiver")
+  posts            Post[]
+  comments         Comment[]
+  groups           GroupMember[]
+  ownedGroups      Group[]          @relation("GroupOwner")
+  reactions        Reaction[]
 }
 
 model Account {
@@ -118,5 +127,125 @@ model PasswordReset {
 enum Role {
   OWNER
   ADMIN
+  MEMBER
+}
+
+// New models for messaging system
+model Message {
+  id          String   @id @default(cuid())
+  content     String   @db.Text
+  read        Boolean  @default(false)
+  senderId    String
+  receiverId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  sender      User     @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver    User     @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+}
+
+// New models for posting system
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   @db.Text
+  published   Boolean  @default(true)
+  authorId    String
+  groupId     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  group       Group?   @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  comments    Comment[]
+  reactions   Reaction[]
+  attachments Attachment[]
+}
+
+model Comment {
+  id          String   @id @default(cuid())
+  content     String   @db.Text
+  authorId    String
+  postId      String
+  parentId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parent      Comment? @relation("CommentToComment", fields: [parentId], references: [id], onDelete: Cascade)
+  replies     Comment[] @relation("CommentToComment")
+  reactions   Reaction[]
+}
+
+model Attachment {
+  id          String   @id @default(cuid())
+  url         String
+  filename    String
+  mimeType    String
+  size        Int
+  postId      String
+  createdAt   DateTime @default(now())
+
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model Reaction {
+  id          String       @id @default(cuid())
+  type        ReactionType
+  userId      String
+  postId      String?
+  commentId   String?
+  createdAt   DateTime     @default(now())
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post        Post?        @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment     Comment?     @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId, commentId, type])
+}
+
+enum ReactionType {
+  LIKE
+  LOVE
+  HAHA
+  WOW
+  SAD
+  ANGRY
+}
+
+// New models for group creation system
+model Group {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  slug        String   @unique
+  isPrivate   Boolean  @default(false)
+  ownerId     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner       User     @relation("GroupOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  members     GroupMember[]
+  posts       Post[]
+}
+
+model GroupMember {
+  id        String     @id @default(cuid())
+  role      GroupRole  @default(MEMBER)
+  groupId   String
+  userId    String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  group     Group      @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, userId])
+}
+
+enum GroupRole {
+  ADMIN
+  MODERATOR
   MEMBER
 }
