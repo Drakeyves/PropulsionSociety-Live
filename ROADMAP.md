@@ -7,7 +7,7 @@ This document outlines the development roadmap for the PropulsionSociety Live pr
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Week 1 | ✅ Completed | 100% |
-| Week 2 | 🔄 Not Started | 0% |
+| Week 2 | 🔄 In Progress | 25% |
 | Week 3 | 🔄 Not Started | 0% |
 | Week 4 | 🔄 Not Started | 0% |
 | Documentation | 🔄 Not Started | 0% |
@@ -15,7 +15,7 @@ This document outlines the development roadmap for the PropulsionSociety Live pr
 | Testing & QA | 🔄 Not Started | 0% |
 | Deployment & DevOps | 🔄 Not Started | 0% |
 
-**Overall Progress:** ![Progress](https://progress-bar.dev/12/?width=500) (12.5% - Week 1 of 8 phases completed)
+**Overall Progress:** ![Progress](https://progress-bar.dev/15/?width=500) (15% - Week 1 complete, 25% of Week 2 complete)
 
 ## Project Overview
 
@@ -100,14 +100,14 @@ The platform includes the following core features:
 
 ## Upcoming Tasks
 
-### Week 2
+### Week 2 (In Progress)
 
-- [ ] **Implement authentication pages**
-  - [ ] Create login page with email/password and social login options
-  - [ ] Implement registration page with form validation
-  - [ ] Create forgot password functionality
-  - [ ] Implement email verification
-  - [ ] Add protected routes and authentication middleware
+- ✅ **Implement authentication pages**
+  - ✅ Create login page with email/password and social login options
+  - ✅ Implement registration page with form validation
+  - ✅ Create forgot password functionality
+  - ✅ Implement email verification
+  - ✅ Add API routes for authentication
 
 - [ ] **Create user profile pages**
   - [ ] Implement user profile view
