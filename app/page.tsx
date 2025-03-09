@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
@@ -8,7 +10,7 @@ import SuccessStoriesSection from '@/components/landing/SuccessStoriesSection';
 import AccessSection from '@/components/landing/AccessSection';
 import PricingSection from '@/components/landing/PricingSection';
 import UrgencySection from '@/components/landing/UrgencySection';
-import FaqSection from '@/components/landing/FaqSection';
+import FAQSection from '@/components/landing/FAQSection';
 import FloatingChatButton from '@/components/ui/FloatingChatButton';
 
 export default function Home() {
@@ -22,7 +24,7 @@ export default function Home() {
       <AccessSection />
       <PricingSection />
       <UrgencySection />
-      <FaqSection />
+      <FAQSection />
       <FloatingChatButton />
     </main>
   );
