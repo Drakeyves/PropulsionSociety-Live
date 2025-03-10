@@ -23,6 +23,15 @@ A Next.js SaaS platform with authentication, messaging, posting, and group creat
   - Responsive design
   - Conversion-focused sections
   - Interactive elements
+- 🖼️ Optimized Image Handling
+  - Custom OptimizedImage component
+  - Loading states and fallbacks
+  - Support for multiple image formats
+  - Enhanced error handling
+- 🧪 Testing Infrastructure
+  - Jest and React Testing Library
+  - Component and utility tests
+  - CI/CD with GitHub Actions
 - 🛠️ Built with modern technologies
   - Next.js 13+ (App Router)
   - Tailwind CSS
@@ -45,7 +54,7 @@ A Next.js SaaS platform with authentication, messaging, posting, and group creat
 
 Example connection string format:
 ```
-postgresql://user:password@ep-cool-forest-123456.us-east-2.aws.neon.tech/propulsion-society?sslmode=require
+postgresql://username:password@hostname/database?sslmode=require
 ```
 
 ### Installation
@@ -55,21 +64,43 @@ postgresql://user:password@ep-cool-forest-123456.us-east-2.aws.neon.tech/propuls
    ```bash
    npm install
    ```
-3. Update the environment variables in `.env`
+3. Copy `.env.example` to `.env` and update with your credentials:
+   ```bash
+   cp .env.example .env
+   ```
+4. Update the environment variables in `.env`
    - Set up your Neon Database connection string
    - Configure authentication providers
-4. Run database migrations
+   - Add SMTP settings for email functionality
+5. Run database migrations
    ```bash
    npx prisma db push
    ```
-5. Start the development server
+6. Start the development server
    ```bash
    npm run dev
    ```
 
+### Testing
+
+Run tests with:
+```bash
+npm test
+```
+
+Run tests in watch mode during development:
+```bash
+npm run test:watch
+```
+
+Generate test coverage report:
+```bash
+npm run test:coverage
+```
+
 ## Environment Variables
 
-Key environment variables:
+Key environment variables (see `.env.example` for detailed descriptions):
 
 - `DATABASE_URL`: Neon Database connection string
 - `NEXTAUTH_URL`: URL of your application
@@ -94,12 +125,19 @@ PropulsionSocietyLive/
 │   ├── layout/           # Layout components
 │   ├── landing/          # Landing page components
 │   └── ui/               # UI components
+│       └── OptimizedImage.tsx  # Custom image component
 ├── lib/                  # Utility functions
 │   ├── auth.ts           # Authentication utilities
 │   └── prisma.ts         # Prisma client
 ├── prisma/               # Prisma schema and migrations
 │   └── schema.prisma     # Database schema
-└── public/               # Static assets
+├── public/               # Static assets
+│   └── images/           # Image assets and placeholders
+├── __tests__/            # Test files
+│   └── components/       # Component tests
+├── .github/              # GitHub configuration
+│   └── workflows/        # GitHub Actions workflows
+└── jest.config.js        # Jest configuration
 ```
 
 ## Development Roadmap
@@ -113,7 +151,12 @@ PropulsionSocietyLive/
 - ✅ Implement landing page
 
 ### Week 2
-- [ ] Implement authentication pages (login, register, forgot password)
+- ✅ Implement authentication pages (login, register, forgot password)
+- ✅ Create OptimizedImage component for better image handling
+- ✅ Update landing page components with optimized images
+- ✅ Implement consistent UI/UX with Tailwind
+- ✅ Set up testing infrastructure with Jest
+- ✅ Configure CI/CD with GitHub Actions
 - [ ] Create user profile pages
 - [ ] Set up dashboard layout
 - [ ] Implement basic messaging UI
@@ -129,6 +172,45 @@ PropulsionSocietyLive/
 - [ ] Create group discovery page
 - [ ] Add file upload functionality
 - [ ] Implement search functionality
+
+## Image Optimization
+
+The project uses a custom `OptimizedImage` component that enhances the standard Next.js Image component with:
+
+- Loading states to improve user experience
+- Fallback images when the primary image fails to load
+- Support for multiple image formats
+- Enhanced error handling
+- Consistent styling across the application
+
+All landing page components have been updated to use this component:
+- HeroSection
+- SuccessStoriesSection
+- FeaturesSection
+- AccessSection
+- Navbar
+- SkillsSection
+
+## Testing Strategy
+
+The project uses Jest and React Testing Library for testing:
+
+- **Unit Tests**: For utility functions and isolated logic
+- **Component Tests**: For UI components with complex behavior
+- **Integration Tests**: For key user flows and API routes
+
+Tests are automatically run on pull requests and pushes to main via GitHub Actions.
+
+## Contributing
+
+When contributing to this project, please follow these guidelines:
+
+1. Use the "use client" directive for components that use React hooks
+2. Follow the established project structure
+3. Write clean, minimal, and robust code
+4. Add detailed comments for complex logic
+5. Write tests for new functionality
+6. Run tests before submitting pull requests
 
 ## License
 
