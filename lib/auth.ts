@@ -134,7 +134,8 @@ export const authOptions: NextAuthOptions = {
     error: '/login'
   },
   session: {
-    strategy: 'database'
+    strategy: 'database',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
     async session({ session, user }) {

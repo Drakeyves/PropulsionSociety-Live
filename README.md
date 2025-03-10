@@ -15,6 +15,7 @@ A Next.js SaaS platform with authentication, messaging, posting, and group creat
   - Create and manage posts
   - Comments and reactions
   - File attachments
+  - Post sharing functionality
 - 👥 Group Creation
   - Create and join groups
   - Public and private groups
@@ -37,6 +38,10 @@ A Next.js SaaS platform with authentication, messaging, posting, and group creat
   - Tailwind CSS
   - Prisma ORM
   - Neon Database (PostgreSQL)
+- 🐛 Bug Tracking and Resolution
+  - Comprehensive bug log
+  - Detailed solution documentation
+  - Testing instructions
 
 ## Getting Started
 
@@ -52,9 +57,9 @@ A Next.js SaaS platform with authentication, messaging, posting, and group creat
 3. Get your connection string from the Neon dashboard
 4. Update the `DATABASE_URL` in your `.env` file with the connection string
 
-Example connection string format:
+Example connection string format with connection pooling:
 ```
-postgresql://username:password@hostname/database?sslmode=require
+postgresql://username:password@hostname/database?sslmode=require&pgbouncer=true&connection_limit=10&pool_timeout=20
 ```
 
 ### Installation
@@ -69,7 +74,7 @@ postgresql://username:password@hostname/database?sslmode=require
    cp .env.example .env
    ```
 4. Update the environment variables in `.env`
-   - Set up your Neon Database connection string
+   - Set up your Neon Database connection string with connection pooling parameters
    - Configure authentication providers
    - Add SMTP settings for email functionality
 5. Run database migrations
@@ -102,7 +107,7 @@ npm run test:coverage
 
 Key environment variables (see `.env.example` for detailed descriptions):
 
-- `DATABASE_URL`: Neon Database connection string
+- `DATABASE_URL`: Neon Database connection string with connection pooling parameters
 - `NEXTAUTH_URL`: URL of your application
 - `NEXTAUTH_SECRET`: Secret for NextAuth.js
 - `SMTP_*`: SMTP settings for email
@@ -117,15 +122,23 @@ PropulsionSocietyLive/
 │   ├── api/              # API routes
 │   │   ├── messages/     # Messaging API
 │   │   ├── posts/        # Posting API
+│   │   │   ├── share/    # Post sharing API
+│   │   │   └── shared/   # Shared posts API
 │   │   └── groups/       # Groups API
+│   │   └── users/        # Users API
 │   ├── (auth)/           # Authentication pages
 │   ├── (dashboard)/      # Dashboard pages
 │   └── layout.tsx        # Root layout
 ├── components/           # React components
 │   ├── layout/           # Layout components
 │   ├── landing/          # Landing page components
+│   ├── dashboard/        # Dashboard components
+│   │   ├── SharePostModal.tsx    # Post sharing modal
+│   │   └── SharedPostMessage.tsx # Shared post message component
+│   ├── NextAuthProvider.tsx      # NextAuth provider component
+│   ├── SessionRefresh.tsx        # Session refresh component
 │   └── ui/               # UI components
-│       └── OptimizedImage.tsx  # Custom image component
+│       └── OptimizedImage.tsx    # Custom image component
 ├── lib/                  # Utility functions
 │   ├── auth.ts           # Authentication utilities
 │   └── prisma.ts         # Prisma client
@@ -137,6 +150,7 @@ PropulsionSocietyLive/
 │   └── components/       # Component tests
 ├── .github/              # GitHub configuration
 │   └── workflows/        # GitHub Actions workflows
+├── READMEBUGLOG.md       # Bug tracking and resolution documentation
 └── jest.config.js        # Jest configuration
 ```
 
@@ -157,21 +171,67 @@ PropulsionSocietyLive/
 - ✅ Implement consistent UI/UX with Tailwind
 - ✅ Set up testing infrastructure with Jest
 - ✅ Configure CI/CD with GitHub Actions
-- [ ] Create user profile pages
-- [ ] Set up dashboard layout
-- [ ] Implement basic messaging UI
+- ✅ Create user profile pages
+- ✅ Set up dashboard layout
+- ✅ Implement basic messaging UI
 
 ### Week 3
-- [ ] Complete messaging system
-- [ ] Implement real-time features
-- [ ] Create post creation and viewing UI
-- [ ] Implement comments and reactions
+- ✅ Complete messaging system
+- ✅ Implement real-time features
+- ✅ Create post creation and viewing UI
+- ✅ Implement comments and reactions
+- ✅ Add post sharing functionality
+- ✅ Create shared post message component
 
 ### Week 4
-- [ ] Implement group creation and management
-- [ ] Create group discovery page
-- [ ] Add file upload functionality
-- [ ] Implement search functionality
+- ✅ Implement group creation and management
+- ✅ Create group discovery page
+- 🔄 Add file upload functionality
+- 🔄 Implement search functionality
+- ✅ Fix critical bugs and improve stability
+
+## Bug Fixes and Testing
+
+The project includes a comprehensive bug tracking system documented in [READMEBUGLOG.md](./READMEBUGLOG.md). Recent fixes include:
+
+### Fixed Issues
+- ✅ Missing SharePostModal Component
+- ✅ Missing SharedPostMessage Component
+- ✅ Database Connection Issues in Development Environment
+- ✅ Post Sharing API 500 Error
+- ✅ Authentication Session Expiration Issues
+
+### Testing the Bug Fixes
+
+To verify that the bug fixes are working correctly, follow these testing instructions:
+
+#### Testing Post Sharing Functionality
+1. Navigate to a post detail page
+2. Click the "Share" button to open the SharePostModal
+3. Select a user from the dropdown
+4. Optionally add a message
+5. Click "Share" to share the post
+6. Verify that a success message appears
+
+#### Testing Shared Post Messages
+1. Share a post with another user
+2. Log in as the recipient user
+3. Navigate to the messages section
+4. Verify that the shared post appears with a preview
+5. Click on the shared post to navigate to the full post
+
+#### Testing Database Connection
+1. Run the application in development mode
+2. Perform multiple database operations in quick succession
+3. Monitor the console for any database connection errors
+
+#### Testing Session Persistence
+1. Log in to the application
+2. Leave the application open for more than 30 minutes
+3. Periodically interact with the application
+4. Verify that you remain logged in
+
+For detailed testing instructions and bug documentation, refer to [READMEBUGLOG.md](./READMEBUGLOG.md).
 
 ## Image Optimization
 
@@ -211,6 +271,7 @@ When contributing to this project, please follow these guidelines:
 4. Add detailed comments for complex logic
 5. Write tests for new functionality
 6. Run tests before submitting pull requests
+7. Document any bugs and their solutions in READMEBUGLOG.md
 
 ## License
 
