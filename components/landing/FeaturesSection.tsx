@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const FeatureItem = ({ title, items }: { title: string; items: string[] }) => (
   <div className="mb-10">
@@ -62,19 +62,21 @@ const FeaturesSection = () => {
           {/* Device Mockups */}
           <div className="relative h-[600px]">
             <div className="absolute top-0 left-0 w-3/4 h-3/4 bg-gradient-to-br from-purple-900/20 to-transparent rounded-lg overflow-hidden shadow-xl">
-              <Image 
+              <OptimizedImage 
                 src="/images/dashboard-mockup.jpg" 
                 alt="PropulsionSociety Dashboard" 
                 fill
                 className="object-cover"
+                showLoadingPlaceholder
               />
             </div>
             <div className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-gradient-to-tr from-purple-900/20 to-transparent rounded-lg overflow-hidden shadow-xl">
-              <Image 
+              <OptimizedImage 
                 src="/images/mobile-mockup.jpg" 
                 alt="PropulsionSociety Mobile App" 
                 fill
                 className="object-cover"
+                showLoadingPlaceholder
               />
             </div>
           </div>

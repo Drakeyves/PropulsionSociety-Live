@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const SkillsSection = () => {
   return (
@@ -47,7 +47,7 @@ const SkillsSection = () => {
           
           {/* CTA Button */}
           <div className="mb-6">
-            <Link href="/register" className="btn btn-yellow px-8 py-3">
+            <Link href="/register" className="btn btn-gold px-8 py-3">
               UNLOCK ALL SKILLS
             </Link>
           </div>

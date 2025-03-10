@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 interface AccessFeature {
   title: string;
@@ -25,11 +25,12 @@ const AccessFeatureCard = ({ feature }: { feature: AccessFeature }) => (
     </ul>
     
     <div className="relative w-full h-48 rounded-lg overflow-hidden">
-      <Image 
+      <OptimizedImage 
         src={feature.image} 
         alt={feature.title} 
         fill
         className="object-cover"
+        showLoadingPlaceholder
       />
     </div>
   </div>

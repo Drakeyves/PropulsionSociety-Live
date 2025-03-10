@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 interface SuccessStory {
   avatar: string;
@@ -16,7 +16,7 @@ const SuccessStoryCard = ({ story }: { story: SuccessStory }) => (
     {/* Header */}
     <div className="p-4 flex items-center">
       <div className="relative w-10 h-10 rounded-full overflow-hidden mr-3">
-        <Image 
+        <OptimizedImage 
           src={story.avatar} 
           alt={story.name} 
           fill
@@ -37,11 +37,12 @@ const SuccessStoryCard = ({ story }: { story: SuccessStory }) => (
     {/* Image (if any) */}
     {story.image && (
       <div className="relative w-full aspect-video">
-        <Image 
+        <OptimizedImage 
           src={story.image} 
           alt="Success story image" 
           fill
           className="object-cover"
+          showLoadingPlaceholder
         />
       </div>
     )}

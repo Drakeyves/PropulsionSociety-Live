@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const Navbar = () => {
   return (
@@ -9,7 +9,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <div className="relative w-8 h-8">
-            <Image 
+            <OptimizedImage 
               src="/images/coin-icon.svg" 
               alt="PropulsionSociety Logo" 
               fill
