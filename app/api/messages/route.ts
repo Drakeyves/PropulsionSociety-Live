@@ -15,6 +15,40 @@ export async function GET(req: NextRequest) {
     const userId = session.user.id;
     const url = new URL(req.url);
     const conversationWith = url.searchParams.get('userId');
+    const searchQuery = url.searchParams.get('search');
+    
+    // If search query is provided, search messages
+    if (searchQuery) {
+      const messages = await prisma.message.findMany({
+        where: {
+          OR: [
+            { senderId: userId, content: { contains: searchQuery, mode: 'insensitive' } },
+            { receiverId: userId, content: { contains: searchQuery, mode: 'insensitive' } }
+          ]
+        },
+        orderBy: {
+          createdAt: 'desc'
+        },
+        include: {
+          sender: {
+            select: {
+              id: true,
+              name: true,
+              image: true
+            }
+          },
+          receiver: {
+            select: {
+              id: true,
+              name: true,
+              image: true
+            }
+          }
+        }
+      });
+      
+      return NextResponse.json(messages);
+    }
     
     // If userId is provided, get conversation with that user
     if (conversationWith) {
@@ -41,6 +75,25 @@ export async function GET(req: NextRequest) {
               id: true,
               name: true,
               image: true
+            }
+          },
+          sharedPost: {
+            include: {
+              post: {
+                select: {
+                  id: true,
+                  title: true,
+                  content: true,
+                  createdAt: true,
+                  author: {
+                    select: {
+                      id: true,
+                      name: true,
+                      image: true
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -116,7 +169,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
     
-    const { receiverId, content } = await req.json();
+    const { receiverId, content, sharedPostId } = await req.json();
     
     if (!receiverId || !content) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -126,7 +179,8 @@ export async function POST(req: NextRequest) {
       data: {
         content,
         senderId: session.user.id,
-        receiverId
+        receiverId,
+        sharedPostId
       },
       include: {
         sender: {
@@ -141,6 +195,24 @@ export async function POST(req: NextRequest) {
             id: true,
             name: true,
             image: true
+          }
+        },
+        sharedPost: {
+          include: {
+            post: {
+              select: {
+                id: true,
+                title: true,
+                content: true,
+                author: {
+                  select: {
+                    id: true,
+                    name: true,
+                    image: true
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -187,4 +259,4 @@ export async function PATCH(req: NextRequest) {
     console.error('Error marking messages as read:', error);
     return NextResponse.json({ error: 'Failed to mark messages as read' }, { status: 500 });
   }
-} 
+}
