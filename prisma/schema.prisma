@@ -31,6 +31,8 @@ model User {
   groups           GroupMember[]
   ownedGroups      Group[]          @relation("GroupOwner")
   reactions        Reaction[]
+  sharedPosts      SharedPost[]     @relation("PostSharer")
+  receivedShares   SharedPost[]     @relation("PostReceiver")
 }
 
 model Account {
@@ -139,9 +141,11 @@ model Message {
   receiverId  String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  sharedPostId String?
 
   sender      User     @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
   receiver    User     @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sharedPost  SharedPost? @relation(fields: [sharedPostId], references: [id], onDelete: SetNull)
 }
 
 // New models for posting system
@@ -160,6 +164,7 @@ model Post {
   comments    Comment[]
   reactions   Reaction[]
   attachments Attachment[]
+  shares      SharedPost[]
 }
 
 model Comment {
@@ -203,6 +208,21 @@ model Reaction {
   comment     Comment?     @relation(fields: [commentId], references: [id], onDelete: Cascade)
 
   @@unique([userId, postId, commentId, type])
+}
+
+// Model for shared posts
+model SharedPost {
+  id          String   @id @default(cuid())
+  postId      String
+  sharerId    String
+  receiverId  String
+  message     String?  @db.Text
+  createdAt   DateTime @default(now())
+  
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  sharer      User     @relation("PostSharer", fields: [sharerId], references: [id], onDelete: Cascade)
+  receiver    User     @relation("PostReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  messages    Message[]
 }
 
 enum ReactionType {
