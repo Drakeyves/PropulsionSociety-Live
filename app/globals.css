@@ -3,27 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 13, 13, 20;
+  --background-secondary-rgb: 20, 20, 33;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
 }
 
 @layer components {
@@ -32,14 +37,50 @@ body {
   }
   
   .btn-primary {
-    @apply bg-purple-600 text-white hover:bg-purple-700;
+    @apply bg-purple text-white hover:bg-purple-dark;
   }
   
   .btn-secondary {
-    @apply border border-purple-600 text-purple-600 hover:bg-purple-50;
+    @apply border border-purple text-purple hover:bg-purple/10;
   }
   
-  .btn-yellow {
-    @apply bg-yellow-500 text-black font-bold hover:bg-yellow-600;
+  .btn-teal {
+    @apply bg-teal text-white hover:bg-teal-dark;
+  }
+  
+  .btn-gold {
+    @apply bg-gold text-background hover:bg-gold-dark;
+  }
+  
+  .btn-outline {
+    @apply border border-metallic text-metallic hover:bg-metallic/10;
+  }
+  
+  .card {
+    @apply bg-background-secondary rounded-lg p-6 border border-metallic/20;
+  }
+  
+  .section {
+    @apply py-16;
+  }
+  
+  .container {
+    @apply px-4 mx-auto;
+  }
+  
+  .tag {
+    @apply inline-block px-3 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .tag-purple {
+    @apply bg-purple/20 text-purple-light;
+  }
+  
+  .tag-teal {
+    @apply bg-teal/20 text-teal-light;
+  }
+  
+  .tag-gold {
+    @apply bg-gold/20 text-gold;
   }
 } 

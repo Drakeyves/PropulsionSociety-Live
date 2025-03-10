@@ -13,12 +13,12 @@ const FloatingChatButton = () => {
     <div className="fixed bottom-6 right-6 z-50">
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-gray-900 rounded-lg shadow-xl mb-4 w-80 overflow-hidden">
+        <div className="bg-background-secondary rounded-lg shadow-xl mb-4 w-80 overflow-hidden border border-metallic/20">
           {/* Chat Header */}
-          <div className="bg-purple-600 p-4 flex items-center justify-between">
+          <div className="bg-purple p-4 flex items-center justify-between">
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center mr-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                   <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
                 </svg>
@@ -40,19 +40,19 @@ const FloatingChatButton = () => {
           <div className="p-4 h-80 overflow-y-auto">
             <div className="flex flex-col space-y-3">
               <div className="flex items-start">
-                <div className="bg-purple-600 text-white rounded-lg py-2 px-3 max-w-xs">
+                <div className="bg-purple text-white rounded-lg py-2 px-3 max-w-xs">
                   <p>👋 Hi there! How can I help you today?</p>
                 </div>
               </div>
               
               <div className="flex items-start justify-end">
-                <div className="bg-gray-700 text-white rounded-lg py-2 px-3 max-w-xs">
+                <div className="bg-background text-white rounded-lg py-2 px-3 max-w-xs border border-metallic/20">
                   <p>I have a question about the pricing plans.</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="bg-purple-600 text-white rounded-lg py-2 px-3 max-w-xs">
+                <div className="bg-purple text-white rounded-lg py-2 px-3 max-w-xs">
                   <p>Of course! We offer three plans: Basic ($97/mo), Premium ($197/mo), and Lifetime ($1,997 one-time). What would you like to know about them?</p>
                 </div>
               </div>
@@ -60,15 +60,15 @@ const FloatingChatButton = () => {
           </div>
           
           {/* Chat Input */}
-          <div className="border-t border-gray-800 p-4">
+          <div className="border-t border-metallic/20 p-4">
             <div className="flex items-center">
               <input 
                 type="text" 
                 placeholder="Type your message..." 
-                className="flex-1 bg-gray-800 border-none rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="flex-1 bg-background border-none rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-purple"
               />
               <button 
-                className="ml-2 bg-purple-600 text-white rounded-full p-2 hover:bg-purple-700 transition-colors"
+                className="ml-2 bg-purple text-white rounded-full p-2 hover:bg-purple-dark transition-colors"
                 aria-label="Send message"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -83,7 +83,7 @@ const FloatingChatButton = () => {
       {/* Chat Button */}
       <button
         onClick={toggleChat}
-        className="bg-purple-600 hover:bg-purple-700 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-colors"
+        className="bg-purple hover:bg-purple-dark text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-colors"
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
         {isOpen ? (

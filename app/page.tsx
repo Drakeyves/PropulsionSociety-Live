@@ -15,7 +15,7 @@ import FloatingChatButton from '@/components/ui/FloatingChatButton';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-background text-white">
       <Navbar />
       <HeroSection />
       <FeaturesSection />
