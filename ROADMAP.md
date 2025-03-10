@@ -8,14 +8,14 @@ This document outlines the development roadmap for the PropulsionSociety Live pr
 |-------|--------|----------|
 | Week 1 | ✅ Completed | 100% |
 | Week 2 | ✅ Completed | 100% |
-| Week 3 | 🔄 In Progress | 75% |
-| Week 4 | 🔄 Not Started | 0% |
+| Week 3 | ✅ Completed | 100% |
+| Week 4 | 🔄 In Progress | 50% |
 | Documentation | 🔄 In Progress | 25% |
 | Security & Compliance | 🔄 In Progress | 10% |
 | Testing & QA | 🔄 In Progress | 20% |
 | Deployment & DevOps | 🔄 In Progress | 25% |
 
-**Overall Progress:** ![Progress](https://progress-bar.dev/60/?width=500) (60% - Week 1 and Week 2 complete, Week 3 mostly complete, some progress on Documentation, Security, Testing, and Deployment)
+**Overall Progress:** ![Progress](https://progress-bar.dev/75/?width=500) (75% - Week 1, Week 2, and Week 3 complete, Week 4 half complete, some progress on Documentation, Security, Testing, and Deployment)
 
 ## Project Overview
 
@@ -128,7 +128,7 @@ The platform includes the following core features:
   - ✅ Implement basic read receipts
   - ✅ Add message status indicators
 
-### Week 3 (In Progress)
+### Week 3 (Completed)
 
 - ✅ **Complete messaging system**
   - ✅ Add message status indicators
@@ -151,38 +151,38 @@ The platform includes the following core features:
   - ✅ Implement comment notifications
   - ✅ Create moderation tools for comments
 
-- 🔄 **Implement dashboard**
+- ✅ **Implement dashboard**
   - ✅ Create dashboard layout
   - ✅ Implement dashboard home page
   - ✅ Add messaging section
   - ✅ Create posts section
   - ✅ Add profile section
-  - 🔄 Implement groups section (basic UI only)
+  - ✅ Implement groups section (basic UI)
 
-### Week 4
+### Week 4 (In Progress)
 
-- 🔄 **Implement group creation and management**
-  - 🔄 Create group creation form
-  - 🔄 Implement group settings and management
-  - [ ] Add member management functionality
-  - [ ] Create group roles and permissions
-  - [ ] Implement group content feed
+- ✅ **Implement group creation and management**
+  - ✅ Create group creation form
+  - ✅ Implement group settings and management
+  - ✅ Add member management functionality
+  - ✅ Create group roles and permissions
+  - ✅ Implement group content feed
 
-- [ ] **Create group discovery page**
-  - [ ] Implement group search and filtering
-  - [ ] Create group categories and tags
-  - [ ] Add recommended groups section
-  - [ ] Implement group join requests
-  - [ ] Create group activity indicators
+- ✅ **Create group discovery page**
+  - ✅ Implement group search and filtering
+  - ✅ Create group categories and tags
+  - ✅ Add recommended groups section
+  - ✅ Implement group join requests
+  - ✅ Create group activity indicators
 
-- [ ] **Add file upload functionality**
+- 🔄 **Add file upload functionality**
   - [ ] Implement file upload component
   - [ ] Create file preview functionality
   - [ ] Add file type validation and security checks
   - [ ] Implement file storage and CDN integration
   - [ ] Create file management interface
 
-- [ ] **Implement search functionality**
+- 🔄 **Implement search functionality**
   - [ ] Create global search component
   - [ ] Implement search results page
   - [ ] Add filters for different content types
