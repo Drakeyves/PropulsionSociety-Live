@@ -1,0 +1,49 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#0D0D14"/>
+  <rect x="5%" y="5%" width="90%" height="90%" fill="#141421" rx="10"/>
+  
+  <!-- Header -->
+  <rect x="7%" y="7%" width="86%" height="10%" fill="#1C1C2E" rx="5"/>
+  <circle cx="12%" cy="12%" r="20" fill="#7A6FE3"/>
+  <rect x="15%" y="11%" width="100" height="20" fill="#A1A1B5" rx="3"/>
+  <rect x="70%" y="11%" width="60" height="20" fill="#A1A1B5" rx="3"/>
+  <rect x="78%" y="11%" width="60" height="20" fill="#A1A1B5" rx="3"/>
+  <rect x="86%" y="11%" width="60" height="20" fill="#A1A1B5" rx="3"/>
+  
+  <!-- Sidebar -->
+  <rect x="7%" y="18%" width="20%" height="75%" fill="#1C1C2E" rx="5"/>
+  <rect x="10%" y="22%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="10%" y="27%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="10%" y="32%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="10%" y="37%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  
+  <!-- Main Content -->
+  <rect x="30%" y="18%" width="63%" height="30%" fill="#1C1C2E" rx="5"/>
+  <rect x="33%" y="22%" width="57%" height="20" fill="#A1A1B5" rx="2"/>
+  <rect x="33%" y="27%" width="40%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="33%" y="32%" width="57%" height="40" fill="#2BB592" rx="2" opacity="0.7"/>
+  
+  <!-- Stats Cards -->
+  <rect x="30%" y="52%" width="20%" height="20%" fill="#1C1C2E" rx="5"/>
+  <circle cx="40%" cy="58%" r="15" fill="#F5A623"/>
+  <rect x="33%" y="63%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="33%" y="67%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  
+  <rect x="52%" y="52%" width="20%" height="20%" fill="#1C1C2E" rx="5"/>
+  <circle cx="62%" cy="58%" r="15" fill="#7A6FE3"/>
+  <rect x="55%" y="63%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="55%" y="67%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  
+  <rect x="74%" y="52%" width="19%" height="20%" fill="#1C1C2E" rx="5"/>
+  <circle cx="83.5%" cy="58%" r="15" fill="#2BB592"/>
+  <rect x="77%" y="63%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  <rect x="77%" y="67%" width="14%" height="10" fill="#A1A1B5" rx="2"/>
+  
+  <!-- Bottom Section -->
+  <rect x="30%" y="74%" width="63%" height="19%" fill="#1C1C2E" rx="5"/>
+  <rect x="33%" y="78%" width="30%" height="15" fill="#A1A1B5" rx="2"/>
+  <rect x="33%" y="83%" width="57%" height="5" fill="#A1A1B5" rx="2"/>
+  <rect x="33%" y="86%" width="57%" height="5" fill="#A1A1B5" rx="2"/>
+  
+  <text x="50%" y="780" font-family="Arial" font-size="24" fill="#A1A1B5" text-anchor="middle">Dashboard Mockup</text>
+</svg> 

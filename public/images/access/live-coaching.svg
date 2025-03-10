@@ -1,0 +1,23 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#0D0D14"/>
+  <rect x="5%" y="5%" width="90%" height="90%" fill="#141421" rx="10"/>
+  
+  <!-- Video Call Icon -->
+  <rect x="200" y="100" width="200" height="150" rx="10" fill="#7A6FE3"/>
+  <rect x="210" y="110" width="180" height="100" rx="5" fill="#0D0D14"/>
+  
+  <!-- Person Silhouette -->
+  <circle cx="300" cy="140" r="20" fill="#A1A1B5"/>
+  <rect x="280" y="160" width="40" height="30" rx="5" fill="#A1A1B5"/>
+  
+  <!-- Video Controls -->
+  <rect x="240" y="220" width="120" height="20" rx="5" fill="#2BB592"/>
+  <circle cx="240" cy="230" r="10" fill="#F5A623"/>
+  <circle cx="270" cy="230" r="10" fill="#F5A623"/>
+  <circle cx="300" cy="230" r="10" fill="#F5A623"/>
+  <circle cx="330" cy="230" r="10" fill="#F5A623"/>
+  <circle cx="360" cy="230" r="10" fill="#F5A623"/>
+  
+  <text x="300" y="280" font-family="Arial" font-size="24" fill="#A1A1B5" text-anchor="middle">Live Coaching Sessions</text>
+  <text x="300" y="310" font-family="Arial" font-size="16" fill="#A1A1B5" text-anchor="middle">Daily Sessions with Expert Coaches</text>
+</svg> 

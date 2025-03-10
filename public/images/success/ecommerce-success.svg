@@ -1,0 +1,16 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#0D0D14"/>
+  <rect x="5%" y="5%" width="90%" height="90%" fill="#141421" rx="10"/>
+  
+  <!-- Shopping Cart Icon -->
+  <circle cx="300" cy="150" r="60" fill="#7A6FE3" opacity="0.8"/>
+  <path d="M270,150 L330,150 M270,130 L340,130 L330,180 L280,180 Z" stroke="white" stroke-width="5" fill="none"/>
+  <circle cx="290" cy="200" r="10" fill="white"/>
+  <circle cx="320" cy="200" r="10" fill="white"/>
+  
+  <!-- Success Metrics -->
+  <rect x="150" y="250" width="300" height="30" rx="5" fill="#2BB592"/>
+  <text x="300" y="270" font-family="Arial" font-size="16" fill="white" text-anchor="middle">+127% Revenue Growth</text>
+  
+  <text x="300" y="320" font-family="Arial" font-size="24" fill="#A1A1B5" text-anchor="middle">E-commerce Success Story</text>
+</svg> 

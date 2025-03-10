@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const HeroSection = () => {
   return (
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 </svg>
               </button>
             </div>
-            <Image 
+            <OptimizedImage 
               src="/images/hero-video-thumbnail.jpg" 
               alt="PropulsionSociety Video" 
               fill
