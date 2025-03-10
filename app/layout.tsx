@@ -5,8 +5,14 @@ import { Toaster } from 'react-hot-toast';
 import React from 'react';
 import { NextAuthProvider } from '@/components/NextAuthProvider';
 import SessionRefresh from '@/components/SessionRefresh';
+import { validateEnv } from '@/lib/env';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+
+// Validate environment variables during server initialization
+if (typeof window === 'undefined') {
+  validateEnv();
+}
 
 export const metadata: Metadata = {
   title: 'PropulsionSocietyLive',

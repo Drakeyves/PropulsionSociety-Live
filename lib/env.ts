@@ -1,4 +1,5 @@
 import type { SessionStrategy } from 'next-auth';
+import { z } from 'zod';
 
 const env = {
   databaseUrl: `${process.env.DATABASE_URL}`,
@@ -40,5 +41,48 @@ const env = {
   maxLoginAttempts: Number(process.env.MAX_LOGIN_ATTEMPTS) || 5,
   maxLoginAttemptsWindow: Number(process.env.MAX_LOGIN_ATTEMPTS_WINDOW) || 60 * 60 * 24,
 };
+
+/**
+ * Environment variable validation schema
+ * This ensures all required environment variables are present and correctly formatted
+ */
+const envSchema = z.object({
+  // Application settings
+  APP_URL: z.string().url(),
+  NEXTAUTH_URL: z.string().url(),
+  NEXTAUTH_SECRET: z.string().min(1),
+  
+  // Database settings
+  DATABASE_URL: z.string().min(1),
+  
+  // Authentication settings
+  AUTH_PROVIDERS: z.string().optional(),
+  CONFIRM_EMAIL: z.enum(['true', 'false']).optional().default('false'),
+  
+  // Session strategy
+  NEXTAUTH_SESSION_STRATEGY: z.enum(['jwt', 'database']).optional().default('database'),
+});
+
+/**
+ * Validate environment variables
+ * Throws an error if any required variables are missing or invalid
+ */
+export function validateEnv() {
+  try {
+    envSchema.parse(process.env);
+    console.log('✅ Environment variables validated successfully');
+  } catch (error) {
+    console.error('❌ Invalid environment variables:', error);
+    throw new Error('Invalid environment variables. Check server logs for more details.');
+  }
+}
+
+/**
+ * Get validated environment variables
+ * Use this function to access environment variables in a type-safe way
+ */
+export function getEnv() {
+  return envSchema.parse(process.env);
+}
 
 export default env;

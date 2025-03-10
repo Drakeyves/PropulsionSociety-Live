@@ -59,6 +59,7 @@ export default function GroupCard({ group, onJoin, onLeave }: GroupCardProps) {
     <Link
       href={`/dashboard/groups/${group.slug}`}
       className="block rounded-lg border bg-card shadow-sm transition-shadow hover:shadow-md"
+      aria-label={`View ${group.name} group details`}
     >
       <div className="p-5">
         <div className="flex items-center justify-between">

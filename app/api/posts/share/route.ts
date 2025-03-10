@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
+import { createErrorResponse, createSuccessResponse, handleApiError } from '@/lib/api-utils';
 
 // Share a post with another user
 export async function POST(req: NextRequest) {
@@ -9,13 +10,20 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
     
     if (!session?.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return createErrorResponse(
+        'UNAUTHORIZED',
+        'You must be logged in to share posts'
+      );
     }
     
-    const { postId, receiverId, message } = await req.json();
+    const { postId, receiverId, message = '' } = await req.json();
     
     if (!postId || !receiverId) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+      return createErrorResponse(
+        'BAD_REQUEST',
+        'Missing required fields',
+        { required: ['postId', 'receiverId'] }
+      );
     }
     
     // Check if post exists and is published
@@ -27,7 +35,10 @@ export async function POST(req: NextRequest) {
     });
     
     if (!post) {
-      return NextResponse.json({ error: 'Post not found or not published' }, { status: 404 });
+      return createErrorResponse(
+        'NOT_FOUND',
+        'Post not found or not published'
+      );
     }
     
     // Check if receiver exists
@@ -38,7 +49,10 @@ export async function POST(req: NextRequest) {
     });
     
     if (!receiver) {
-      return NextResponse.json({ error: 'Receiver not found' }, { status: 404 });
+      return createErrorResponse(
+        'NOT_FOUND',
+        'Receiver not found'
+      );
     }
     
     // Create shared post record
@@ -86,14 +100,12 @@ export async function POST(req: NextRequest) {
       }
     });
     
-    return NextResponse.json({
-      success: true,
+    return createSuccessResponse({
       sharedPost,
       message: newMessage
     });
     
   } catch (error) {
-    console.error('Error sharing post:', error);
-    return NextResponse.json({ error: 'Failed to share post' }, { status: 500 });
+    return handleApiError(error, 'Failed to share post');
   }
 }

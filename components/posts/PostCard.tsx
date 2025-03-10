@@ -87,7 +87,7 @@ export default function PostCard({
         </div>
 
         {/* Post content */}
-        <Link href={`/dashboard/posts/${post.id}`} className="block">
+        <Link href={`/dashboard/posts/${post.id}`} className="block" aria-label={`Read full post: ${post.title}`}>
           <h3 className="text-xl font-bold mb-2">{post.title}</h3>
           <p className="text-muted-foreground mb-4">{truncatedContent}</p>
         </Link>

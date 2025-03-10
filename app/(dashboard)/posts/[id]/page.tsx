@@ -76,11 +76,12 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
       // Update post with incremented reaction count
       setPost((prev) => {
         if (!prev) return prev;
+        const prevCount = prev._count || { comments: 0, reactions: 0 };
         return {
           ...prev,
           _count: {
-            ...prev._count,
-            reactions: (prev._count?.reactions || 0) + 1,
+            ...prevCount,
+            reactions: (prevCount.reactions || 0) + 1,
           },
         };
       });
@@ -112,11 +113,12 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
       // Update post with incremented comment count
       setPost((prev) => {
         if (!prev) return prev;
+        const prevCount = prev._count || { comments: 0, reactions: 0 };
         return {
           ...prev,
           _count: {
-            ...prev._count,
-            comments: (prev._count?.comments || 0) + 1,
+            ...prevCount,
+            comments: (prevCount.comments || 0) + 1,
           },
         };
       });
