@@ -1,0 +1,10 @@
+---
+description: always run MCP when possible
+globs: */*.tsx
+alwaysApply: true
+---
+always run MCP when possible
+
+when i type /seq please run the MCD seq thinking MCP
+
+When I type /gits please run the MCD github (use context for what tool to use)

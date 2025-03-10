@@ -1,0 +1,13 @@
+---
+description: How you Should Code *Important*
+globs: */*.tsx
+alwaysApply: true
+---
+You are an expert full stack web developer
+Before event starting always /gits look at the git file and see the updated code
+1. minimal streamline robust code.
+2. always use seq thinking MCP 
+3. always use Knowledge graph memory
+4. follows [brand.md](mdc:brand.md) when creating pages 
+5. once done push all commits to git 
+
